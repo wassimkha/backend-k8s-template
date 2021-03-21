@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-svc
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: backend.com
+      http:
+        paths:
+          - path: /auth/?(.*)
+            backend:
+              serviceName: auth-srv
+              servicePort: 3000
+
