@@ -7,12 +7,13 @@ microservices. A detailed plan to add microservices and deploy to digital ocean.
 ## This project includes
 
 - Template for multiple microservices and how they communicate with each other:
-    - [ ] [example of two services communicating with each other](./app/)
-    - [X] [their deployment yaml files](./k8s/)
+    - [ ] [example of two services communicating with each other](./app)
+    - [X] [their deployment yaml files](./k8s)
     - [X] [the ingress controller file to deploy and route the requests accordingly](./k8s/ingress/ingress-controller.yaml)
-- Error handling and middlewares for nodejs in common code:
+- Error handling, middlewares and Models for nodejs in common code:
     - [ ] Different error classes and example of use in the microservices
     - [ ] Middlewares for different functionalities and their implementation in the microservices
+    - [ ] Models and their implementation of hashing and class methods
 - React setup with Redux:
     - [ ] Functional react communicating with microservices
     - [ ] Using redux to send requests
@@ -45,7 +46,7 @@ microservices. A detailed plan to add microservices and deploy to digital ocean.
 - Dockerize the server and push it to docker hub
 - Create a kubernetes deployment and service using the files inside the k8s folder as a template
 - Add the database and setup persistent data if needed. Again, use the files inside k8s folder as a template
-- Add the microservice to the ingress-controller file, as a new element of the array path, while specifying the correct port, service name and the path reserved to that serive
+- Add the microservice to the ingress-controller file, as a new element of the array path, while specifying the correct port, service name, and the path reserved to that service
 example:
 ```yaml
 paths:
