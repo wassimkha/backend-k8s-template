@@ -1,8 +1,8 @@
 ## Project Description
 
-this is a template framework for building a microservice project in kubernetes. With multiple microservices
+this is a template framework for building a microservice project in kubernetes. This will allow to create multiple microservices
 communicating with each other, persistent data using mongodb, a functional react app using redux to communicate with the
-microservices. A detailed plan to add microservices and deploy to digital ocean.
+microservices, and a detailed plan to add microservices and deploy to digital ocean.
 
 ## This project includes
 
@@ -48,16 +48,16 @@ microservices. A detailed plan to add microservices and deploy to digital ocean.
 - Add the database and setup persistent data if needed. Again, use the files inside k8s folder as a template
 - Add the microservice to the ingress-controller file, as a new element of the array path, while specifying the correct port, service name, and the path reserved to that service
 example:
-```yaml
-paths:
-- path: /auth/?(.*)
-backend:
-serviceName: auth-srv
-servicePort: 3000
-```
+    ```yaml
+    paths:
+      - path: /auth/?(.*)
+        backend:
+        serviceName: auth-srv
+        servicePort: 3000
+    ```
 - Deploy all the new yaml files
 
-## Errors and Middlewares
+## Errors, Middlewares and Models
 
 ## React and Redux
 
