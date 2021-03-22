@@ -14,4 +14,8 @@ spec:
             backend:
               serviceName: auth-srv
               servicePort: 3000
+          - path: /payment/?(.*)
+            backend:
+              serviceName: payment-srv
+              servicePort: 4000
 
