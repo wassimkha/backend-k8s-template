@@ -7,7 +7,7 @@ microservices, and a detailed plan to add microservices and deploy to digital oc
 ## This project includes
 
 - Template for multiple microservices and how they communicate with each other:
-    - [ ] [example of two services communicating with each other](./app)
+    - [X] [example of two services communicating with each other](./app/payment/routes/online.js)
     - [X] [their deployment yaml files](./k8s)
     - [X] [the ingress controller file to deploy and route the requests accordingly](./k8s/ingress/ingress-controller.yaml)
 - Error handling, middlewares and Models for nodejs in common code:
@@ -55,7 +55,8 @@ example:
         serviceName: auth-srv
         servicePort: 3000
     ```
-- Deploy all the new yaml files
+- Add the commands to stop/deploy the yaml files and docker images in deploy.sh and stop.sh
+- run ./deploy.sh
 
 ## Errors, Middlewares and Models
 
