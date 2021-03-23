@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const send_internal_request = async () => {
+const send_internal_request =  () => {
     return axios.create({
         baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
         headers: {
@@ -9,4 +9,6 @@ const send_internal_request = async () => {
         })
 }
 
-module.exports = { send_internal_request };
+const axios_instance = send_internal_request();
+
+module.exports = { axios_instance };
