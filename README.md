@@ -10,6 +10,7 @@ microservices, and a detailed plan to add microservices and deploy to digital oc
     - [X] [example of two services communicating with each other](./app/payment/routes/online.js)
     - [X] [their deployment yaml files](./k8s)
     - [X] [the ingress controller file to deploy and route the requests accordingly](./k8s/ingress/ingress-controller.yaml)
+    - [ ] Component/Unit tests
 - Error handling, middlewares and Models for nodejs in common code:
     - [ ] Different error classes and example of use in the microservices
     - [ ] Middlewares for different functionalities and their implementation in the microservices
@@ -17,10 +18,12 @@ microservices, and a detailed plan to add microservices and deploy to digital oc
 - React setup with Redux:
     - [ ] Functional react communicating with microservices
     - [ ] Using redux to send requests
+    - [ ] Component/Unit tests
 - Deployment instruction to digital ocean
     - [ ] How to set up digital ocean
     - [ ] How to deploy the k8s to the managed kubernetes of digital ocean
     - [ ] How to set up persistent data in digital ocean
+    - [ ] CI/CD Pipeline that runs component tests and deploy to the cloud
 
 ##How to start the project
 - install Docker desktop and kubernetes
