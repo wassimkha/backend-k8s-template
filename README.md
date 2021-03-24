@@ -10,6 +10,7 @@ microservices, and a detailed plan to add microservices and deploy to digital oc
     - [X] [example of two services communicating with each other](./app/payment/routes/online.js)
     - [X] [their deployment yaml files](./k8s)
     - [X] [the ingress controller file to deploy and route the requests accordingly](./k8s/ingress/ingress-controller.yaml)
+    - [ ] Working Auth and Payment service
     - [ ] Component/Unit tests
 - Error handling, middlewares and Models for nodejs in common code:
     - [ ] Different error classes and example of use in the microservices
