@@ -14,7 +14,11 @@ spec:
     spec:
       containers:
         - name: auth
-          image: wassimkha/template-auth-service:1.0
+          image: wassimkha/template-auth-service:latest
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://auth-mongo-svc:27017/auth'
+
 ---
 apiVersion: v1
 kind: Service

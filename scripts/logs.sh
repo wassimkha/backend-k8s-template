@@ -1,0 +1,1 @@
+kubectl logs --follow -l app=$1
