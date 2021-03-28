@@ -10,12 +10,11 @@ microservices, and a detailed plan to add microservices and deploy to digital oc
     - [X] [example of two services communicating with each other](./app/payment/routes/online.js)
     - [X] [their deployment yaml files](./k8s)
     - [X] [the ingress controller file to deploy and route the requests accordingly](./k8s/ingress/ingress-controller.yaml)
-    - [ ] Working Auth and Payment service
-    - [ ] Component/Unit tests
+    - [X] Working Auth service
 - Error handling, middlewares and Models for nodejs in common code:
-    - [ ] Different error classes and example of use in the microservices
-    - [ ] Middlewares for different functionalities and their implementation in the microservices
-    - [ ] Models and their implementation of hashing and class methods
+    - [X] How to handle errors on the microservices
+    - [X] Middlewares for different functionalities and their implementation in the microservices
+    - [X] Models and their implementation of hashing and class methods
 - React setup with Redux:
     - [ ] Functional react communicating with microservices
     - [ ] Using redux to send requests
@@ -24,7 +23,6 @@ microservices, and a detailed plan to add microservices and deploy to digital oc
     - [ ] How to set up digital ocean
     - [ ] How to deploy the k8s to the managed kubernetes of digital ocean
     - [ ] How to set up persistent data in digital ocean
-    - [ ] CI/CD Pipeline that runs component tests and deploy to the cloud
 
 ##How to start the project
 - install Docker desktop and kubernetes
@@ -60,10 +58,22 @@ example:
         servicePort: 3000
     ```
 - Add the commands to stop/deploy the yaml files and docker images in deploy.sh and stop.sh
-- run ./deploy.sh
+- run ./scripts/stop_deploy.sh
 
 ## Errors, Middlewares and Models
+- ### Errors
+all errors will be handled by [error-handler.js](./common/middlewares/error-handler.js)
+all we need to do is import it in index.js file:
+```js
+app.use(error_handler);
+```
+- ### Midllewares
+- [error-handler.js](./common/middlewares/error-handler.js) is a middleware to handle all of the errors inside the nodejs servers
+- [require-auth.js](./common/middlewares/require-auth.js) is a middleware to get the token from the headers and verify it. Need to be passed for all routes that need auth
+- [validate-request.js](./common/middlewares/validate-request.js) is a middleware that will take the req and throw an error if the params are not correctly setup
 
+- ### Models
+- The models are in the [common/models folder](./common/models). There's the User and Password model to compare different passwords
 ## React and Redux
 
 ## Digital Ocean
