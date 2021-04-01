@@ -1,9 +1,9 @@
 const express = require('express');
-const {body, validationResult} = require('express-validator');
-const jwt = require('jsonwebtoken');
+const {body} = require('express-validator');
 const {validateRequest} = require("../common/middlewares/validate-request");
 const Password = require("../common/services/password");
 const User = require("../common/models/User")
+const JsonToken = require('../common/services/jsontoken');
 const {InvalidCredentials} = require("../common/errors/invalid_credential");
 
 const router = express.Router();
@@ -36,12 +36,11 @@ router.post('/signin',
             return next(error);
         }
 
-        const userJwt = jwt.sign(
+        const userJwt = JsonToken.sign(
             {
                 id: existingUser.id,
                 email: existingUser.email,
-            },
-            "key"
+            }
         );
 
         res.setHeader('token', userJwt)

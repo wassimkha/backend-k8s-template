@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const JsonToken = require('../services/jsontoken');
 const {NotAuthenticated} = require('../errors/not_auth');
 
 exports.requireAuth = function (req, res, next) {
@@ -7,11 +7,9 @@ exports.requireAuth = function (req, res, next) {
         const error = new NotAuthenticated()
         throw error;
     }
-    try {
-        res.locals.currentUser = jwt.verify(token, "key");
-    } catch (e) {
-        res.locals.currentUser = null;
-    }
+
+    res.locals.currentUser = JsonToken.verify(token)
+
     if (!res.locals.currentUser) {
         const error = new NotAuthenticated()
         throw error;

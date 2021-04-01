@@ -1,6 +1,6 @@
 const express = require('express');
 const {body, validationResult} = require('express-validator');
-const jwt = require('jsonwebtoken');
+const JsonToken = require('../common/services/jsontoken');
 const {validateRequest} = require("../common/middlewares/validate-request");
 const User = require("../common/models/User")
 const {ExistingUser} = require("../common/errors/existing_user");
@@ -20,7 +20,7 @@ router.post('/signup', [
 
         const existingUser = await User.findOne({email});
         if (existingUser) {
-            const error =  new ExistingUser();
+            const error = new ExistingUser();
             return next(error);
         }
 
@@ -30,12 +30,11 @@ router.post('/signup', [
         });
         await user.save();
 
-        const userJwt = jwt.sign(
+        const userJwt = JsonToken.sign(
             {
                 id: user.id,
                 email: user.email,
-            },
-            "key"
+            }
         );
 
         res.setHeader('token', userJwt)
