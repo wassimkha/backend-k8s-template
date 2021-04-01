@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
+const {NotAuthenticated} = require('../errors/not_auth');
 
 exports.requireAuth = function (req, res, next) {
     const token = req.headers.token;
     if (!token) {
-        const error =  new Error("No token");
-        error.status = 401;
+        const error = new NotAuthenticated()
         throw error;
     }
     try {
@@ -13,8 +13,7 @@ exports.requireAuth = function (req, res, next) {
         res.locals.currentUser = null;
     }
     if (!res.locals.currentUser) {
-        const error =  new Error("Not authorized");
-        error.status = 401;
+        const error = new NotAuthenticated()
         throw error;
     }
     next();

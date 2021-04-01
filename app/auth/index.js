@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const express = require('express');
 const bodyParser = require('body-parser');
 const error_handler = require('./common/middlewares/error-handler')
+const {NotFoundError} = require('./common/errors/not_found')
 
 const Online = require('./routes/online')
 const signInRouter = require('./routes/signin')
@@ -17,8 +18,7 @@ app.set('trust proxy', true)
 app.use('/auth', [signInRouter, signUpRouter, currentUser, Online]);
 
 app.all("*", async (req, res, next) => {
-    const error = new Error("route not found")
-    error.status = 400
+    const error = new NotFoundError()
     next(error)
 })
 

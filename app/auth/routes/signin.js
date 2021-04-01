@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const {validateRequest} = require("../common/middlewares/validate-request");
 const Password = require("../common/services/password");
 const User = require("../common/models/User")
-
+const {InvalidCredentials} = require("../common/errors/invalid_credential");
 
 const router = express.Router();
 
@@ -22,8 +22,7 @@ router.post('/signin',
         const existingUser = await User.findOne({email});
 
         if (!existingUser) {
-            const error = new Error("Invalid credentials");
-            error.status = 401;
+            const error = new InvalidCredentials();
             return next(error);
         }
 
@@ -33,8 +32,7 @@ router.post('/signin',
         );
 
         if (!passwordsMatch) {
-            const error = new Error("Invalid credentials");
-            error.status = 401;
+            const error = new InvalidCredentials();
             return next(error);
         }
 

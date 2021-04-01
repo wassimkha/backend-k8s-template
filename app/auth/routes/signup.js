@@ -3,6 +3,7 @@ const {body, validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');
 const {validateRequest} = require("../common/middlewares/validate-request");
 const User = require("../common/models/User")
+const {ExistingUser} = require("../common/errors/existing_user");
 
 const router = express.Router();
 
@@ -19,8 +20,7 @@ router.post('/signup', [
 
         const existingUser = await User.findOne({email});
         if (existingUser) {
-            const error =  new Error("Email in use");
-            error.status = 409;
+            const error =  new ExistingUser();
             return next(error);
         }
 
