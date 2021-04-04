@@ -6,7 +6,8 @@ class JsonToken {
         const key = randomBytes(8).toString('hex');
         const userJwt = jwt.sign(
             payload,
-            key
+            key,
+            { expiresIn: '7 days' }
         );
         return `${userJwt}.${key}`;
     }

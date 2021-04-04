@@ -75,5 +75,9 @@ app.use(error_handler);
 - ### Models
 - The models are in the [common/models folder](./common/models). There's the User and Password model to compare different passwords
 ## React and Redux
-
+# add redux
+- go to the types.js file and add the desired enums
+- go to the reducer file and add your new reducer file with the logic to handle the enums and state
+- add action file and add you logic
+- go to the component and bring it
 ## Digital Ocean
