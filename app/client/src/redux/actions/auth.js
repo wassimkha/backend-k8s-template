@@ -15,8 +15,15 @@ export const load_user = () => async dispatch => {
         set_auth_token(localStorage.token);
     }
 
+    const axs = axios.create({
+        baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+
     try {
-        const res = await axios.post('http://localhost:4000/auth/currentuser');
+        const res = await axios.post('/auth/currentuser');
         dispatch({
             type: USER_LOADED,
             payload: res.data
@@ -30,8 +37,14 @@ export const load_user = () => async dispatch => {
 
 //Register User
 export const register = ({email, password}) => async dispatch => {
+    const axs = axios.create({
+        baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
     try {
-        const res = await axios.post('http://localhost:4000/auth/signup', {
+        const res = await axios.post('/auth/signup', {
             email: email,
             password: password
         });
@@ -48,8 +61,14 @@ export const register = ({email, password}) => async dispatch => {
 
 //Login User
 export const login = ({email, password}) => async dispatch => {
+    const axs = axios.create({
+        baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
     try {
-        const res = await axios.post('http://localhost:4000/auth/signin', {
+        const res = await axios.post('/auth/signin', {
             email: email,
             password: password
         });

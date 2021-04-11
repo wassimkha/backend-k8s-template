@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const error_handler = require('./common/middlewares/error-handler')
@@ -13,6 +13,10 @@ const currentUser = require('./routes/current-user')
 const app = express();
 
 app.use(bodyParser.json());
+const corsOptions = {
+    exposedHeaders: ['token', 'Authorization ', 'Content-Type', 'Host']
+};
+app.use(cors(corsOptions));
 app.set('trust proxy', true)
 
 app.use('/auth', [signInRouter, signUpRouter, currentUser, Online]);

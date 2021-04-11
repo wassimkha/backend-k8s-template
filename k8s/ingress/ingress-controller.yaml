@@ -7,8 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: backend.com
-      http:
+    - http:
         paths:
           - path: /auth/?(.*)
             backend:
@@ -18,4 +17,8 @@ spec:
             backend:
               serviceName: payment-srv
               servicePort: 4000
+          - path: /?(.*)
+            backend:
+              serviceName: client-svc
+              servicePort: 3000
 

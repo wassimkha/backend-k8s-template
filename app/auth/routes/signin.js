@@ -44,7 +44,7 @@ router.post('/signin',
         );
 
         res.setHeader('token', userJwt)
-        return res.status(200).send(existingUser);
+        return res.status(200).send({user: existingUser});
     }
 );
 
