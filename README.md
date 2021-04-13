@@ -83,7 +83,9 @@ app.use(error_handler);
 ## Digital Ocean
 
 ## Design
+<p>hello</p>
 
-https://lucid.app/documents/view/20c72f37-30c7-426e-bd57-86c2f697966d
-
-https://lucid.app/publicSegments/view/e794de15-6179-4de5-9807-685c80fd5508
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;">
+<iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/20c72f37-30c7-426e-bd57-86c2f697966d" id="Y_itW4nZJM2_">
+</iframe>
+</div>
