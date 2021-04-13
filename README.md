@@ -81,3 +81,9 @@ app.use(error_handler);
 - add action file and add you logic
 - go to the component and bring it
 ## Digital Ocean
+
+## Design
+
+https://lucid.app/documents/view/20c72f37-30c7-426e-bd57-86c2f697966d
+
+https://lucid.app/publicSegments/view/e794de15-6179-4de5-9807-685c80fd5508
