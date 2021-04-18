@@ -16,13 +16,12 @@ microservices, and a detailed plan to add microservices and deploy to digital oc
     - [X] Middlewares for different functionalities and their implementation in the microservices
     - [X] Models and their implementation of hashing and class methods
 - React setup with Redux:
-    - [ ] Functional react communicating with microservices
-    - [ ] Using redux to send requests
-    - [ ] Component/Unit tests
+    - [X] Functional react communicating with microservices
+    - [X] Using redux to send requests
 - Deployment instruction to digital ocean
-    - [ ] How to set up digital ocean
-    - [ ] How to deploy the k8s to the managed kubernetes of digital ocean
-    - [ ] How to set up persistent data in digital ocean
+    - [X] How to set up digital ocean
+    - [X] How to deploy the k8s to the managed kubernetes of digital ocean
+    - [X] How to set up persistent data in digital ocean
 
 ##How to start the project
 - install Docker desktop and kubernetes
@@ -80,4 +79,78 @@ app.use(error_handler);
 - go to the reducer file and add your new reducer file with the logic to handle the enums and state
 - add action file and add you logic
 - go to the component and bring it
+# Load user
+```js
+useEffect(() => {
+        store.dispatch(load_user());
+    }, [])
+```
+call this in App.js to load user as soon as they log in the page. We set the deffault header and store the token in local storage
 ## Digital Ocean
+### run the cluster
+- start kubernetes cluster
+- install doctl
+- create api key in digital ocean 
+- doct auth init (from powershell)
+- series of commands to connect digital ocean context locally
+  - doctl kubernetes cluster kubeconfig save <cluster_name (i.e backend-template)>
+    - now we are connected to cloud kubernetes
+- install ingress nginx: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.45.0/deploy/static/provider/do/deploy.yaml
+- to see contexts: kubectl config view
+  - to switch context: kubectl config use-context <name i.e docker-desktop>
+### create the dbs
+***https://www.mongodb.com/digital-ocean*** <br>
+- create droplet
+- ssh into droplet: ssh root@138.197.97.158
+- install and run
+  - wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+  - sudo apt-get install gnupg
+  - wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+  - echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+  - sudo apt-get update
+  - sudo apt-get install -y mongodb-org
+  - ps --no-headers -o comm 1
+  - sudo service mongod start
+  - sudo service mongod status (check the status)
+  - sudo service mongod stop (to stop mongodb)
+  - sudo service mongod restart (to restart mongodb)
+  - mongo (to start the database)
+- create an admin user and connect to it
+  - use admin
+  - ```javascript
+      db.createUser({ user: "root", pwd: "root", roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]})
+   ```
+  - enable auth
+    - sudo vi /etc/mongod.conf
+    - uncomment security and add
+      ```shell
+      ...
+      security:
+        authorization: "enabled"
+      ...
+      ```
+    - sudo service mongod restart (restard mongodb_
+    - To connect
+      - mongo -u root -p --authenticationDatabase admin
+- configure firewall
+  - sudo ufw enable
+  - sudo ufw allow 27017 or sudo ufw allow from your_trusted_server_ip/32 to any port 27017 (your_trusted_server_ip=)
+  - sudo ufw status
+-configure mongo to listen to remote server
+    - sudo vi /etc/mongod.conf
+    - add the droplet server ip
+      ```shell
+      # network interfaces
+      net:
+      port: 27017
+      bindIp: 127.0.0.1,mongodb_server_ip
+      ```
+    - sudo service mongod restart
+
+
+
+
+
+
+  
+

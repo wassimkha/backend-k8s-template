@@ -36,9 +36,8 @@ const start = async () => {
     // if (!process.env.MONGO_URI) {
     //     throw new Error('MONGO_URI must be defined');
     // }
-
     try {
-        await mongoose.connect('mongodb://auth-mongo-svc:27017/auth', {
+        await mongoose.connect('mongodb://root:root@104.131.161.71:27017/auth?authSource=admin', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true,
