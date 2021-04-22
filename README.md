@@ -96,6 +96,7 @@ call this in App.js to load user as soon as they log in the page. We set the def
   - doctl kubernetes cluster kubeconfig save <cluster_name (i.e backend-template)>
     - now we are connected to cloud kubernetes
 - install ingress nginx: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.45.0/deploy/static/provider/do/deploy.yaml
+- to watch ingress status: kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx --watch
 - to see contexts: kubectl config view
   - to switch context: kubectl config use-context <name i.e docker-desktop>
 ### create the dbs
