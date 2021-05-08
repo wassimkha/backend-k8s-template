@@ -1,6 +1,6 @@
 ## Project Description
 
-this is a template framework for building a microservice project in kubernetes. This will allow to create multiple microservices
+this is a template for building a microservice project in kubernetes. This will allow to create multiple microservices
 communicating with each other, persistent data using mongodb, a functional react app using redux to communicate with the
 microservices, and a detailed plan to add microservices and deploy to digital ocean. <br>
 [Link to LucidChart architecture overview](https://lucid.app/documents/view/20c72f37-30c7-426e-bd57-86c2f697966d)
