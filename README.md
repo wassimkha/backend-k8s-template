@@ -23,9 +23,9 @@ microservices, and a detailed plan to add microservices and deploy to digital oc
     - [X] How to set up digital ocean
     - [X] How to deploy the k8s to the managed kubernetes of digital ocean
     - [X] How to set up persistent data in digital ocean
-- TODOs
-    - [ ] MongoDB sharding/ distributed across multiple nodes
-    - [ ] MongoDB replication
+- What can be still be added
+    - MongoDB sharding/distributed across multiple nodes
+    - MongoDB replication
 
 ##How to start the project
 - install Docker desktop and kubernetes
